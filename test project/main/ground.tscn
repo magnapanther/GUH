@@ -1,0 +1,133 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp7gpo6a2y88n"]
+
+[ext_resource type="Texture2D" uid="uid://p10hqp4tcj2a" path="res://main/player/undergrowth i guess.png" id="1_vb5d1"]
+
+[node name="ground" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(16, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(48, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(80, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(112, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(144, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+position = Vector2(176, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D7" type="Sprite2D" parent="."]
+position = Vector2(208, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D8" type="Sprite2D" parent="."]
+position = Vector2(240, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D9" type="Sprite2D" parent="."]
+position = Vector2(272, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D10" type="Sprite2D" parent="."]
+position = Vector2(304, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D11" type="Sprite2D" parent="."]
+position = Vector2(336, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D12" type="Sprite2D" parent="."]
+position = Vector2(368, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D13" type="Sprite2D" parent="."]
+position = Vector2(400, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D14" type="Sprite2D" parent="."]
+position = Vector2(432, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D15" type="Sprite2D" parent="."]
+position = Vector2(464, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D16" type="Sprite2D" parent="."]
+position = Vector2(496, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D17" type="Sprite2D" parent="."]
+position = Vector2(528, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D18" type="Sprite2D" parent="."]
+position = Vector2(560, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D19" type="Sprite2D" parent="."]
+position = Vector2(592, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D20" type="Sprite2D" parent="."]
+position = Vector2(624, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D21" type="Sprite2D" parent="."]
+position = Vector2(656, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D22" type="Sprite2D" parent="."]
+position = Vector2(688, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D23" type="Sprite2D" parent="."]
+position = Vector2(720, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D24" type="Sprite2D" parent="."]
+position = Vector2(752, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D25" type="Sprite2D" parent="."]
+position = Vector2(784, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D26" type="Sprite2D" parent="."]
+position = Vector2(816, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D27" type="Sprite2D" parent="."]
+position = Vector2(848, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D28" type="Sprite2D" parent="."]
+position = Vector2(880, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D29" type="Sprite2D" parent="."]
+position = Vector2(912, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D30" type="Sprite2D" parent="."]
+position = Vector2(944, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D31" type="Sprite2D" parent="."]
+position = Vector2(976, 336)
+texture = ExtResource("1_vb5d1")
+
+[node name="Sprite2D32" type="Sprite2D" parent="."]
+position = Vector2(1008, 336)
+texture = ExtResource("1_vb5d1")

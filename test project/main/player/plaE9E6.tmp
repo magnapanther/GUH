@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://dutcvnvvefae3"]
+
+[ext_resource type="Script" path="res://main/player/player.gd" id="1_46clh"]
+[ext_resource type="Texture2D" uid="uid://dd3vwyq6j7btg" path="res://just a lil guy.png" id="2_8616p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquq5"]
+size = Vector2(16, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ui48i"]
+size = Vector2(1, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqfhk"]
+size = Vector2(1, 10)
+
+[node name="player" type="CharacterBody2D"]
+safe_margin = 0.02
+script = ExtResource("1_46clh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_lquq5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_8616p")
+
+[node name="left climb" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="the" type="CollisionShape2D" parent="left climb"]
+position = Vector2(-8.5, 0)
+shape = SubResource("RectangleShape2D_ui48i")
+
+[node name="right climb" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="the (secondary)" type="CollisionShape2D" parent="right climb"]
+position = Vector2(8.5, 0)
+shape = SubResource("RectangleShape2D_nqfhk")
+
+[connection signal="body_entered" from="left climb" to="." method="_on_left_climb_body_entered"]
+[connection signal="body_exited" from="left climb" to="." method="_on_left_climb_body_exited"]
+[connection signal="body_entered" from="right climb" to="." method="_on_right_climb_body_entered"]
+[connection signal="body_exited" from="right climb" to="." method="_on_right_climb_body_exited"]

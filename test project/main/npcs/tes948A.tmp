@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcs1t8qvj4qy4"]
+
+[ext_resource type="PackedScene" uid="uid://chxtkke3x2l3c" path="res://main/npcs/npc_template.tscn" id="1_nxyw4"]
+[ext_resource type="Script" path="res://main/npcs/test_npc.gd" id="2_kpupd"]
+[ext_resource type="Texture2D" uid="uid://bhn8t5knmiic5" path="res://graphics/goobers/goober (test)/portrait_neutral.png" id="3_ratch"]
+
+[node name="test_npc" instance=ExtResource("1_nxyw4")]
+script = ExtResource("2_kpupd")
+
+[node name="Prompt" parent="." index="2"]
+position = Vector2(0, -38)
+
+[node name="Portrait" parent="Bubble" index="3"]
+texture = ExtResource("3_ratch")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

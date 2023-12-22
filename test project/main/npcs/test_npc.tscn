@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://bcs1t8qvj4qy4"]
+
+[ext_resource type="PackedScene" uid="uid://chxtkke3x2l3c" path="res://main/npcs/npc_template.tscn" id="1_nxyw4"]
+[ext_resource type="Script" path="res://main/npcs/test_npc.gd" id="2_kpupd"]
+[ext_resource type="Texture2D" uid="uid://bhn8t5knmiic5" path="res://graphics/goobers/goober (test)/portrait_neutral.png" id="3_ratch"]
+[ext_resource type="Texture2D" uid="uid://dl2pnr603m0cr" path="res://graphics/goobers/goober (test)/banner.png" id="3_we1cw"]
+[ext_resource type="AudioStream" uid="uid://b75o7jytxdbjm" path="res://graphics/goobers/goober (test)/speak.wav" id="5_l8xbh"]
+
+[node name="test_npc" instance=ExtResource("1_nxyw4")]
+z_index = 0
+script = ExtResource("2_kpupd")
+
+[node name="Prompt" parent="." index="2"]
+position = Vector2(0, -38)
+
+[node name="ColorRect2" parent="Bubble" index="0"]
+offset_left = -0.920006
+offset_top = -23.08
+offset_right = 1.91998
+offset_bottom = 1.96
+color = Color(0.00784314, 0.117647, 0.0980392, 1)
+
+[node name="Banner" parent="Bubble" index="1"]
+texture = ExtResource("3_we1cw")
+
+[node name="Dialogue" parent="Bubble" index="2"]
+anchor_left = 0.240562
+offset_top = -1.52
+offset_bottom = 21.48
+
+[node name="Portrait" parent="Bubble" index="5"]
+texture = ExtResource("3_ratch")
+
+[node name="speechTimer" parent="Bubble" index="6"]
+wait_time = 0.1
+one_shot = false
+
+[node name="Speech" parent="." index="4"]
+stream = ExtResource("5_l8xbh")
+
+[connection signal="timeout" from="Bubble/speechTimer" to="." method="_on_speech_timer_timeout"]

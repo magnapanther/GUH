@@ -1,0 +1,102 @@
+[gd_scene load_steps=10 format=3 uid="uid://dutcvnvvefae3"]
+
+[ext_resource type="Script" path="res://main/player/player.gd" id="1_46clh"]
+[ext_resource type="Texture2D" uid="uid://cmyvi6wsl0o8d" path="res://graphics/player/fella 2.png" id="2_6js33"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquq5"]
+size = Vector2(9, 9)
+
+[sub_resource type="Animation" id="Animation_anmeq"]
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_3x6vl"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gue2a"]
+_data = {
+"RESET": SubResource("Animation_anmeq"),
+"idle": SubResource("Animation_3x6vl")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ui48i"]
+size = Vector2(1, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqfhk"]
+size = Vector2(1, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_63jyh"]
+size = Vector2(5, 2)
+
+[node name="player" type="CharacterBody2D"]
+safe_margin = 0.02
+script = ExtResource("1_46clh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1.5)
+shape = SubResource("RectangleShape2D_lquq5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6js33")
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_gue2a")
+}
+autoplay = "RESET"
+
+[node name="left climb" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="the" type="CollisionShape2D" parent="left climb"]
+position = Vector2(-5, 1)
+shape = SubResource("RectangleShape2D_ui48i")
+
+[node name="right climb" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="the (secondary)" type="CollisionShape2D" parent="right climb"]
+position = Vector2(5, 1)
+shape = SubResource("RectangleShape2D_nqfhk")
+
+[node name="bonkCheck" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="the (trimary (??))" type="CollisionShape2D" parent="bonkCheck"]
+position = Vector2(0.5, -4)
+shape = SubResource("RectangleShape2D_63jyh")
+
+[connection signal="body_entered" from="left climb" to="." method="_on_left_climb_body_entered"]
+[connection signal="body_exited" from="left climb" to="." method="_on_left_climb_body_exited"]
+[connection signal="body_entered" from="right climb" to="." method="_on_right_climb_body_entered"]
+[connection signal="body_exited" from="right climb" to="." method="_on_right_climb_body_exited"]
+[connection signal="body_entered" from="bonkCheck" to="." method="_on_bonk_check_body_entered"]
+[connection signal="body_exited" from="bonkCheck" to="." method="_on_bonk_check_body_exited"]

@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6bxiljls37rg"]
+
+[ext_resource type="Script" path="res://main/menu.gd" id="1_ewt55"]
+[ext_resource type="Texture2D" uid="uid://do455kt6tg4jr" path="res://graphics/main_menu.png" id="2_b0u2d"]
+
+[node name="menu" type="Node2D"]
+script = ExtResource("1_ewt55")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_b0u2d")
+
+[node name="Play" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "gam!??!?!?"
+
+[node name="Quit" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.5
+offset_top = 20.0
+offset_right = 18.5
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "flee"
+
+[connection signal="pressed" from="CanvasLayer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/Quit" to="." method="_on_quit_pressed"]

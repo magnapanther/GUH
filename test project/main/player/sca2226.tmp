@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3tinm5cwcuoy"]
+
+[ext_resource type="Texture2D" uid="uid://cegts78di7yq4" path="res://graphics/player/scarf.png" id="1_sp3jb"]
+
+[sub_resource type="GDScript" id="GDScript_06hks"]
+script/source = "extends Node2D
+
+const waitcounter = 10
+var curtick = 0
+var mainpos
+var secondpos
+
+func _ready():
+	mainpos = $Scarf.global_position
+	secondpos = $Scarf/Scarf2.global_position
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	
+	if curtick < 1:
+		$Scarf/Scarf2.global_position = mainpos
+		$Scarf/Scarf2/Scarf3.global_position = secondpos
+		curtick = 5
+		mainpos = $Scarf.global_position
+		secondpos = $Scarf/Scarf2.global_position
+		
+	curtick -= 1
+"
+
+[node name="scarf" type="Node2D"]
+script = SubResource("GDScript_06hks")
+
+[node name="Scarf" type="Sprite2D" parent="."]
+texture = ExtResource("1_sp3jb")
+
+[node name="Scarf2" type="Sprite2D" parent="Scarf"]
+texture = ExtResource("1_sp3jb")
+
+[node name="Scarf3" type="Sprite2D" parent="Scarf/Scarf2"]
+texture = ExtResource("1_sp3jb")

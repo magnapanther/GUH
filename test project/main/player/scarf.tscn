@@ -1,0 +1,161 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3tinm5cwcuoy"]
+
+[ext_resource type="Texture2D" uid="uid://cegts78di7yq4" path="res://graphics/player/scarf.png" id="1_sp3jb"]
+
+[sub_resource type="GDScript" id="GDScript_06hks"]
+script/source = "extends Node2D
+
+const waitcounter = 10
+var curtick = 0
+var mainpos
+var secondpos
+var thirdpos
+var lastdir = 3
+var cooldown = 0
+var posdiff
+const minimumdist = 3
+
+var init_y = 0
+var init_x = 0
+
+signal commence_violence
+signal violence_completed
+
+func _ready():
+	mainpos = $Scarf.global_position
+	secondpos = $Scarf/Scarf2.global_position
+	thirdpos = $Scarf/Scarf2/Scarf3.global_position
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	if Input.is_action_pressed(\"right\"):
+		lastdir = -3
+	elif Input.is_action_pressed(\"left\"):
+		lastdir = 3
+	
+	
+	if curtick < 1 and cooldown == 0:
+		if Input.is_action_pressed(\"left\") or Input.is_action_pressed(\"right\") or Input.is_action_pressed(\"jump\") or Input.is_action_pressed(\"climb\") or $\"..\".velocity.y != 0:
+			$Scarf/Scarf2.global_position = mainpos
+			$Scarf/Scarf2/Scarf3.global_position = secondpos
+			$Scarf/Scarf2/Scarf3/Scarf4.global_position = thirdpos
+			curtick = 1
+			mainpos = $Scarf.global_position
+			secondpos = $Scarf/Scarf2.global_position
+			thirdpos = $Scarf/Scarf2/Scarf3.global_position
+		else:
+			curtick = 1
+			$Scarf/Scarf2.global_position = mainpos
+			$Scarf/Scarf2.global_position.y = mainpos.y + 3
+			$Scarf/Scarf2.global_position.x = mainpos.x + lastdir
+			
+			$Scarf/Scarf2/Scarf3.global_position = secondpos
+			$Scarf/Scarf2/Scarf3.global_position.y = mainpos.y + 3
+			$Scarf/Scarf2/Scarf3.global_position.x = secondpos.x + lastdir
+			
+			$Scarf/Scarf2/Scarf3/Scarf4.global_position = thirdpos
+			$Scarf/Scarf2/Scarf3/Scarf4.global_position.y = thirdpos.y + 3
+			$Scarf/Scarf2/Scarf3/Scarf4.global_position.x = thirdpos.x + lastdir
+			
+			mainpos = $Scarf.global_position
+			secondpos = $Scarf/Scarf2.global_position
+			thirdpos = $Scarf/Scarf2/Scarf3.global_position
+			
+	curtick -= 1
+	#if cooldown > 0:
+		#cooldown -= 1
+	#
+	#if cooldown > 10:
+		#
+		#
+		#
+		#$Scarf/Scarf2.position.y += init_y
+		#$Scarf/Scarf2/Scarf3.position.y += init_y
+		#$Scarf/Scarf2/Scarf3/Scarf4.position.y += init_y
+		#
+		#$Scarf/Scarf2.position.y += .5
+		#$Scarf/Scarf2/Scarf3.position.y += .5
+		#$Scarf/Scarf2/Scarf3/Scarf4.position.y += .5
+		#
+		#$Scarf/Scarf2.position.x += init_x
+		#$Scarf/Scarf2/Scarf3.position.x += init_x
+		#$Scarf/Scarf2/Scarf3/Scarf4.position.x += init_x
+	#if cooldown < 10 and cooldown > 0:
+		#$Scarf/Scarf2.position.y -= init_y
+		#$Scarf/Scarf2/Scarf3.position.y -= init_y
+		#$Scarf/Scarf2/Scarf3/Scarf4.position.y -= init_y
+		#
+		#$Scarf/Scarf2.position.x -= init_x
+		#$Scarf/Scarf2/Scarf3.position.x -= init_x
+		#$Scarf/Scarf2/Scarf3/Scarf4.position.x -= init_x
+	#
+	#if Input.is_action_just_pressed(\"scarf\") and cooldown == 0:
+		#$Scarf/Scarf2.global_position = mainpos
+		#$Scarf/Scarf2.global_position.y = mainpos.y + 3
+		#$Scarf/Scarf2.global_position.x = mainpos.x + lastdir
+		#
+		#$Scarf/Scarf2/Scarf3.global_position = secondpos
+		#$Scarf/Scarf2/Scarf3.global_position.y = mainpos.y + 3
+		#$Scarf/Scarf2/Scarf3.global_position.x = secondpos.x + lastdir
+		#
+		#$Scarf/Scarf2/Scarf3/Scarf4.global_position = thirdpos
+		#$Scarf/Scarf2/Scarf3/Scarf4.global_position.y = thirdpos.y + 3
+		#$Scarf/Scarf2/Scarf3/Scarf4.global_position.x = thirdpos.x + lastdir
+		#
+		#mainpos = $Scarf.global_position
+		#secondpos = $Scarf/Scarf2.global_position
+		#thirdpos = $Scarf/Scarf2/Scarf3.global_position
+		#
+		#commence_violence.emit()
+		#init_y = $\"..\".velocity.y/200
+		#init_x = $\"..\".velocity.x/100
+		#cooldown = 30
+	#
+		#
+
+
+#func _on_atk_timer_timeout():
+	#curtick = 1
+	#$Scarf/Scarf2.global_position = mainpos
+	#$Scarf/Scarf2.global_position.y = mainpos.y + 3
+	#$Scarf/Scarf2.global_position.x = mainpos.x + lastdir
+	#
+	#$Scarf/Scarf2/Scarf3.global_position = secondpos
+	#$Scarf/Scarf2/Scarf3.global_position.y = mainpos.y + 3
+	#$Scarf/Scarf2/Scarf3.global_position.x = secondpos.x + lastdir
+	#
+	#$Scarf/Scarf2/Scarf3/Scarf4.global_position = thirdpos
+	#$Scarf/Scarf2/Scarf3/Scarf4.global_position.y = thirdpos.y + 3
+	#$Scarf/Scarf2/Scarf3/Scarf4.global_position.x = thirdpos.x + lastdir
+	#
+	#mainpos = $Scarf.global_position
+	#secondpos = $Scarf/Scarf2.global_position
+	#thirdpos = $Scarf/Scarf2/Scarf3.global_position
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqcwc"]
+size = Vector2(6, 6)
+
+[node name="scarf" type="Node2D"]
+script = SubResource("GDScript_06hks")
+
+[node name="Scarf" type="Sprite2D" parent="."]
+texture = ExtResource("1_sp3jb")
+
+[node name="Scarf2" type="Sprite2D" parent="Scarf"]
+texture = ExtResource("1_sp3jb")
+
+[node name="Scarf3" type="Sprite2D" parent="Scarf/Scarf2"]
+texture = ExtResource("1_sp3jb")
+
+[node name="Scarf4" type="Sprite2D" parent="Scarf/Scarf2/Scarf3"]
+texture = ExtResource("1_sp3jb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scarf/Scarf2/Scarf3/Scarf4"]
+shape = SubResource("RectangleShape2D_sqcwc")
+
+[node name="atkTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="atkTimer" to="." method="_on_atk_timer_timeout"]

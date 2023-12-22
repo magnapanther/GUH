@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4or8fpju7n4r"]
+
+[ext_resource type="PackedScene" uid="uid://dutcvnvvefae3" path="res://main/player/player.tscn" id="1_hqe4s"]
+[ext_resource type="PackedScene" uid="uid://b3tinm5cwcuoy" path="res://main/player/scarf.tscn" id="2_ifnww"]
+
+[node name="room_template" type="Node2D"]
+
+[node name="npc" type="Node2D" parent="."]
+
+[node name="player" parent="." instance=ExtResource("1_hqe4s")]
+collision_mask = 4
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+zoom = Vector2(1.5, 1.5)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="scarf" parent="player" instance=ExtResource("2_ifnww")]
+
+[node name="tilemaps" type="Node2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="tilemaps"]
+format = 2
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="Lights" type="Node2D" parent="."]
